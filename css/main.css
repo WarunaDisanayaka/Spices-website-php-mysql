@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.menu-bar {
+  background-color: black;
+  height: 80px;
+  width: 100%;
+  display: flex;
+
+ 
+  padding: 0 5%;
+  position: relative;
+ 
+}
+
+
+
+.menu-bar ul li a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-family: 'Reem Kufi', serif;
+  font-size: 20px;
+  padding-left:30px;
+  box-shadow:4px;
+}
+
+.menu-bar ul li a:hover {
+  color: yellow;
+}
+
+.header-logo{
+
+  color:blue;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.main-nav{
+
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+
+
+
+/* slider  */
+.carousel-inner{
+  height:75% !important;
+}
+
+
+
