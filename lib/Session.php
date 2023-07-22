@@ -29,15 +29,15 @@ class Session{
 
  public static function checkSession(){
   self::init();
-  if (self::get("login")== false) {
+  if (self::get("adminlogin")== false) {
    self::destroy();
-   header("Location:login.php");
+   header("Location:index.php");
   }
  }
 
  public static function checkLogin(){
   self::init();
-  if (self::get("login")== true) {
+  if (self::get("adminlogin")== true) {
    header("Location:index.php");
   }
  }
