@@ -1,24 +1,13 @@
+<?php include '../classes/Adminlogin.php'?>
 <?php
-   require('connection.inc.php');
-   require('functions.inc.php');
-   $msg='';
-   if (isset($_POST['submit'])) {
-      $username=get_safe_value($con,$_POST['username']);
-      $password=get_safe_value($con,$_POST['password']);
-      $sql="SELECT * FROM admin_users WHERE username='$username' AND password='$password'";
-      $res=mysqli_query($con,$sql);
-      $count=mysqli_num_rows($res);
-      if ($count>0) {
-         $_SESSION['ADMIN_LOGIN']='yes';
-         $_SESSION['ADMIN_USERNAME']=$username;
-         header('location:dashboard.php');
-         die();
-      }else{
-         $msg="Please enter correct login details";
-      }
+   $al=new Adminlogin();
+   if ($_SERVER['REQUEST_METHOD']=='POST') {
+      $adminUser=$_POST['username'];
+      $adminPass=$_POST['password'];
+
+      $check=$al->adminLogin($adminUser,$adminPass);
    }
 ?>
-
 <!doctype html>
 <html lang="en">
    <head>
@@ -39,16 +28,20 @@
                   <div class="card-body p-5">
                      <h3 class="mb-5 ">Admin Login</h3>
                         <div class="field-error">
-                           <?php echo $msg?>
+                           <?php 
+                                 if (isset($check)) {
+                                    echo $check;
+                                 }
+                           ?>
                         </div>
                      <form method="POST">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Username</label>
-                           <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" required>
+                           <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
                         </div>
                         <div class="form-group">
                            <label for="exampleInputPassword1">Password</label>
-                           <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                           <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
                         <button type="submit" name="submit" class="btn btn-success btn-block">Login</button>
                      </form>

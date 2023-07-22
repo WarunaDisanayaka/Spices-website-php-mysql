@@ -1,15 +1,3 @@
-<?php
-   require('connection.inc.php');
-   require('functions.inc.php');
-   $msg='';
-   if (isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!='') {
-     
-   }else{
-       header('location:index.php');
-       die();
-   }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -44,12 +32,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Orders</span>
-                                        <span class="h3 font-bold mb-0"><?php 
-                                            $sql="SELECT COUNT(id) FROM `order`";
-                                            $res=mysqli_query($con,$sql);
-                                            $row=mysqli_fetch_assoc($res);
-                                            echo $row['COUNT(id)'];
-                                        ?></span>
+                                        <span class="h3 font-bold mb-0"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -72,12 +55,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Earnings</span>
-                                        <span class="h3 font-bold mb-0"><?php 
-                                            $sql="SELECT SUM(total_price) FROM `order`";
-                                            $res=mysqli_query($con,$sql);
-                                            $row=mysqli_fetch_assoc($res);
-                                            echo 'Rs '.$row['SUM(total_price)'];
-                                        ?></span>
+                                        <span class="h3 font-bold mb-0"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -101,12 +79,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">No of Categories</span>
-                                        <span class="h3 font-bold mb-0"><?php 
-                                            $sql="SELECT COUNT(id) FROM categories";
-                                            $res=mysqli_query($con,$sql);
-                                            $row=mysqli_fetch_assoc($res);
-                                            echo $row['COUNT(id)'];
-                                        ?></span>
+                                        <span class="h3 font-bold mb-0"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -130,12 +103,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">No of Products</span>
-                                        <span class="h3 font-bold mb-0"><?php 
-                                            $sql="SELECT COUNT(id) FROM product";
-                                            $res=mysqli_query($con,$sql);
-                                            $row=mysqli_fetch_assoc($res);
-                                            echo $row['COUNT(id)'];
-                                        ?></span>
+                                        <span class="h3 font-bold mb-0"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -159,12 +127,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">No of Customers</span>
-                                        <span class="h3 font-bold mb-0"><?php 
-                                            $sql="SELECT COUNT(id) FROM users WHERE type='Customer'";
-                                            $res=mysqli_query($con,$sql);
-                                            $row=mysqli_fetch_assoc($res);
-                                            echo $row['COUNT(id)'];
-                                        ?></span>
+                                        <span class="h3 font-bold mb-0"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -185,12 +148,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">No of Plant Distributors</span>
-                                        <span class="h3 font-bold mb-0"><?php 
-                                            $sql="SELECT COUNT(id) FROM users WHERE type='Plant distributor'";
-                                            $res=mysqli_query($con,$sql);
-                                            $row=mysqli_fetch_assoc($res);
-                                            echo $row['COUNT(id)'];
-                                        ?></span>
+                                        <span class="h3 font-bold mb-0"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -212,12 +170,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">No of Landscape architecture</span>
-                                        <span class="h3 font-bold mb-0"><?php 
-                                            $sql="SELECT COUNT(id) FROM users WHERE type='Landscape architecture'";
-                                            $res=mysqli_query($con,$sql);
-                                            $row=mysqli_fetch_assoc($res);
-                                            echo $row['COUNT(id)'];
-                                        ?></span>
+                                        <span class="h3 font-bold mb-0"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
