@@ -40,5 +40,47 @@
             return $result;
         }
 
+
+        public function getCatById($id){
+            $query="SELECT * FROM Category WHERE CategoryId='$id'";
+            $result=$this->db->select($query);
+            return $result;
+        }
+
+        public function catUpdate($catName,$id){
+            $id=mysqli_real_escape_string($this->db->link,$id);
+            $catName = $this->fm->validation($catName);
+            $catName = mysqli_real_escape_string($this->db->link,$catName);
+
+            if (empty($catName)) {
+                $msg="Fields must not be empty !";
+                return $msg;
+            }else{
+                $query="UPDATE Category SET CategoryName='$catName' WHERE CategoryId='$id'";
+
+                $catupdate=$this->db->update($query);
+                if ($catupdate) {
+                    $msg="Category Updated Successfully";
+                    header("Location:categories.php");
+                    return $msg;
+                }else{
+                    $msg="Category Not Updated";
+                    return $msg;
+                }
+            }
+        }
+
+
+        public function delByCatId($id){
+            $query="DELETE FROM Category WHERE  CategoryId='$id'";
+            $deldata=$this->db->delete($query);
+            if ($deldata) {
+                $msg="Category Deleted Successfully!";
+            }else{
+                $msg="Category Not Deleted";
+            }
+        }
+
+
     }
 ?>
