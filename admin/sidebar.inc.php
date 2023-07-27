@@ -56,13 +56,8 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="products.php">Products</a>
                                     <a class="nav-link" href="add_products.php">Add Products</a>
-                                    <a class="nav-link" href="promote_products.php">Promote Products</a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="customize.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
-                                Customize Orders
-                            </a>
                             <a class="nav-link" href="orders.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                                 Orders

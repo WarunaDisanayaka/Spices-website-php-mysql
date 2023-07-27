@@ -1,6 +1,10 @@
 <?php include '../classes/Category.php'?>
 <?php
     $cat = new Category();
+    if (isset($_GET['delete'])) {
+        $id=$_GET['delete'];
+        $delCat=$cat->delByCatId($id);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +33,11 @@
                             <li class="breadcrumb-item active">Categories</li>
                         </ol>
                     
-                
+                        <?php 
+                                 if (isset($delCat)) {
+                                    echo $delCat;
+                                 }
+                           ?>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -39,7 +47,7 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            
                                             <th>ID</th>
                                             <th>Categories</th>
                                             <th>Status</th>
@@ -54,13 +62,13 @@
                                                 $i++;
                                         ?>
                                         <tr>
-                                            <td><?php echo $i;?></td>
+                                          
                                             <td><?php echo $result['CategoryId']?></td>
                                             <td><?php echo $result['CategoryName']?></td>
                                             <td>
                                                 <div class="option-btn">
                                                 <?php 
-                                                    echo "<span class='btn  delete-btn'><a href='?type=delete&id=".$row['id']."'>Delete</a></span> &nbsp;";
+                                                    echo "<span class='btn  delete-btn'><a href='?delete=".$result['CategoryId']."'>Delete</a></span> &nbsp;";
                                                     echo "<span class='btn btn-info edit-btn'><a href='edit_categories.php?catid=".$result['CategoryId']."'>Edit</a></span>";
                                                  ?>
                                                 </div>

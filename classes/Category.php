@@ -71,5 +71,16 @@
         }
 
 
+        public function delByCatId($id){
+            $query="DELETE FROM Category WHERE  CategoryId='$id'";
+            $deldata=$this->db->delete($query);
+            if ($deldata) {
+                $msg="Category Deleted Successfully!";
+            }else{
+                $msg="Category Not Deleted";
+            }
+        }
+
+
     }
 ?>

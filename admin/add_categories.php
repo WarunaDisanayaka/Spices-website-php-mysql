@@ -37,6 +37,11 @@
                         <i class="fas fa-table me-1"></i>
                         Add Category
                      </div>
+                     <div class="cat-error"><?php 
+                                 if (isset($insertCat)) {
+                                    echo $insertCat;
+                                 }
+                           ?></div>
                      <div class="card-body">
                         <form method="POST" action="add_categories.php">
                            <div class="form-group w-50">
@@ -47,11 +52,7 @@
                                 <button type="submit" name="submit" class="btn btn-success">Add</button>
                            </div>
                         </form>
-                        <div class="cat-error"><?php 
-                                 if (isset($insertCat)) {
-                                    echo $insertCat;
-                                 }
-                           ?></div>
+                       
                      </div>
                   </div>
                </div>

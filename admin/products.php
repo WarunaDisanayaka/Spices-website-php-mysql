@@ -1,36 +1,3 @@
-<?php
-    require('connection.inc.php');
-    require('functions.inc.php');
-    require('session.php');
-    
-    //Active & Deactive 
-    if (isset($_GET['type']) && $_GET['type']!='') {
-        $type=get_safe_value($con,$_GET['type']);
-        if ($type=='status') {
-            $operation=get_safe_value($con,$_GET['operation']);
-            $id=get_safe_value($con,$_GET['id']);
-            if ($operation=='active') {
-                $status='1';
-            }else{
-                $status='0';
-            }
-            $update_status="UPDATE categories SET status='$status' WHERE id='$id'";
-            mysqli_query($con,$update_status);
-        }
-
-
-        //Delete
-        if ($type=='delete') {
-            $id=get_safe_value($con,$_GET['id']);
-            $delete_sql="DELETE FROM product WHERE id='$id'";
-            mysqli_query($con,$delete_sql);
-        }
-    }
-
-
-    $sql="SELECT product.*,categories.categories FROM product,categories WHERE product.categories_id=categories.id ORDER BY product.id DESC";
-    $res=mysqli_query($con,$sql);
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -79,34 +46,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
-                                        $i=1;
-                                        while ($row=mysqli_fetch_assoc($res)) {?>
-                                        <tr>
-                                            <td><?php echo $i;?></td>
-                                            <td><?php echo $row['id'];?></td>
-                                            <td><?php echo $row['categories'];?></td>
-                                            <td><?php echo $row['name'];?></td>
-                                            <td><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image']?>"/></td>
-                                            <td><?php echo $row['mrp'];?></td>
-                                            <td><?php echo $row['price'];?></td>
-                                            <td><?php echo $row['qty'];?></td> 
-                                            <td>
-                                                <div class="option-btn">
-                                                <?php 
-                                                    if ($row['status']==1) {
-                                                        echo "<span class='btn btn-success active-btn'><a href='?type=status&operation=deactive&id=".$row['id']."'>Active</a></span>&nbsp;";
-                                                    }else{
-                                                        echo "<span class='btn btn-danger deactive-btn'><a href='?type=status&operation=active&id=".$row['id']."'>Deactive</a></span>&nbsp;";
-                                                    }
-                                                    echo "<span class='btn  delete-btn'><a href='?type=delete&id=".$row['id']."'>Delete</a></span> &nbsp;";
-                                                    echo "<span class='btn btn-info edit-btn'><a href='add_products.php?id=".$row['id']."'>Edit</a></span> &nbsp;";
-                                                    echo "<span class='btn btn-info edit-btn'><a href='promote_products.php?id=".$row['id']."'>Promote</a></span>";
-                                                 ?>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php $i++; } ?>
+                                       
                                     </tbody>
                                 </table>
                             </div>
