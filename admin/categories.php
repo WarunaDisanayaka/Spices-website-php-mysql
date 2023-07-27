@@ -60,13 +60,8 @@
                                             <td>
                                                 <div class="option-btn">
                                                 <?php 
-                                                    if ($row['status']==1) {
-                                                        echo "<span class='btn btn-success active-btn'><a href='?type=status&operation=deactive&id=".$row['id']."'>Active</a></span>&nbsp;";
-                                                    }else{
-                                                        echo "<span class='btn btn-danger deactive-btn'><a href='?type=status&operation=active&id=".$row['id']."'>Deactive</a></span>&nbsp;";
-                                                    }
                                                     echo "<span class='btn  delete-btn'><a href='?type=delete&id=".$row['id']."'>Delete</a></span> &nbsp;";
-                                                    echo "<span class='btn btn-info edit-btn'><a href='add_categories.php?id=".$row['id']."'>Edit</a></span>";
+                                                    echo "<span class='btn btn-info edit-btn'><a href='edit_categories.php?catid=".$result['CategoryId']."'>Edit</a></span>";
                                                  ?>
                                                 </div>
                                             </td>
