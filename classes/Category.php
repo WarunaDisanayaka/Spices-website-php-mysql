@@ -33,5 +33,12 @@
             }
         }
 
+
+        public function getAllCat(){
+            $query="SELECT * FROM Category ORDER BY CategoryId DESC";
+            $result=$this->db->select($query);
+            return $result;
+        }
+
     }
 ?>
