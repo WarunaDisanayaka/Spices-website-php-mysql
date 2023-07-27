@@ -1,4 +1,12 @@
-
+<?php include '../classes/Category.php'?>
+<?php
+   $cat = new Category();
+   if ($_SERVER['REQUEST_METHOD']=='POST') {
+      $catName=$_POST['categories'];
+      $insertCat=$cat->catInsert($catName);
+   }
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -30,16 +38,20 @@
                         Add Category
                      </div>
                      <div class="card-body">
-                        <form method="POST">
+                        <form method="POST" action="add_categories.php">
                            <div class="form-group w-50">
                               <label for="exampleInputEmail1">Category</label>
-                              <input type="text" name="categories" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category" required value="<?php echo $categories; ?>">
+                              <input type="text" name="categories" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category">
                            </div>
                            <div class="cat-btn">
                                 <button type="submit" name="submit" class="btn btn-success">Add</button>
                            </div>
                         </form>
-                        <div class="cat-error"><?php echo $msg;?></div>
+                        <div class="cat-error"><?php 
+                                 if (isset($insertCat)) {
+                                    echo $insertCat;
+                                 }
+                           ?></div>
                      </div>
                   </div>
                </div>
