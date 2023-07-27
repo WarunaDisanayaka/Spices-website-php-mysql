@@ -50,6 +50,7 @@
                                             <th>Price</th>
                                             <th>Stock</th>
                                             <th>Size</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,6 +70,7 @@
                                             <td><?php echo $result['Price']?></td>
                                             <td><?php echo $result['Stock']?></td>
                                             <td><?php echo $result['Size']?></td>
+                                            <td><a href="edit_product.php?proid=<?php echo $result['ProductID']?>">Edit</a> || <a href="">Delete</td>
                                        </tr>
                                        <?php
                                              }
