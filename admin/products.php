@@ -4,6 +4,12 @@
     $pd=new Product();
     $fm=new Format();
 ?>
+<?php
+    if (isset($_GET['delPro'])) {
+        $id=$_GET['delPro'];
+        $delProduct=$pd->delProduct($id);
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +76,7 @@
                                             <td><?php echo $result['Price']?></td>
                                             <td><?php echo $result['Stock']?></td>
                                             <td><?php echo $result['Size']?></td>
-                                            <td><a href="edit_product.php?proid=<?php echo $result['ProductID']?>">Edit</a> || <a href="">Delete</td>
+                                            <td><a href="edit_product.php?proid=<?php echo $result['ProductID']?>">Edit</a> || <a href="?delPro=<?php echo $result['ProductID']?>">Delete</td>
                                        </tr>
                                        <?php
                                              }

@@ -112,8 +112,14 @@
         }
 
 
-        public function delByCatId($id){
-            
+        public function delProduct($id){
+            $query="DELETE FROM Product WHERE  ProductID='$id'";
+            $deldata=$this->db->delete($query);
+            if ($deldata) {
+                $msg="Product Deleted Successfully!";
+            }else{
+                $msg="Product Not Deleted";
+            }
         }
 
 
