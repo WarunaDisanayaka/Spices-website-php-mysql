@@ -3,7 +3,7 @@
    $al=new Adminlogin();
    if ($_SERVER['REQUEST_METHOD']=='POST') {
       $adminUser=$_POST['username'];
-      $adminPass=$_POST['password'];
+      $adminPass=md5($_POST['password']);
 
       $check=$al->adminLogin($adminUser,$adminPass);
    }
