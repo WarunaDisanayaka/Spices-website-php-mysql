@@ -1,35 +1,6 @@
+<?php include '../classes/Category.php'?>
 <?php
-   
-    require('connection.inc.php');
-    require('functions.inc.php');
-    require('session.php');
-    //Active & Deactive 
-    if (isset($_GET['type']) && $_GET['type']!='') {
-        $type=get_safe_value($con,$_GET['type']);
-        if ($type=='status') {
-            $operation=get_safe_value($con,$_GET['operation']);
-            $id=get_safe_value($con,$_GET['id']);
-            if ($operation=='active') {
-                $status='1';
-            }else{
-                $status='0';
-            }
-            $update_status="UPDATE categories SET status='$status' WHERE id='$id'";
-            mysqli_query($con,$update_status);
-        }
-
-
-        //Delete
-        if ($type=='delete') {
-            $id=get_safe_value($con,$_GET['id']);
-            $delete_sql="DELETE FROM categories WHERE id='$id'";
-            mysqli_query($con,$delete_sql);
-        }
-    }
-
-
-    $sql="SELECT * FROM categories ORDER BY categories ASC";
-    $res=mysqli_query($con,$sql);
+    $cat = new Category();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,12 +47,16 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        $i=1;
-                                        while ($row=mysqli_fetch_assoc($res)) {?>
+                                            $getCat=$cat->getAllCat();
+                                            if ($getCat) {
+                                                $i=0;
+                                               while ($result=$getCat->fetch_assoc()) {
+                                                $i++;
+                                        ?>
                                         <tr>
                                             <td><?php echo $i;?></td>
-                                            <td><?php echo $row['id']?></td>
-                                            <td><?php echo $row['categories']?></td>
+                                            <td><?php echo $result['CategoryId']?></td>
+                                            <td><?php echo $result['CategoryName']?></td>
                                             <td>
                                                 <div class="option-btn">
                                                 <?php 
@@ -96,7 +71,10 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <?php $i++; } ?>
+                                        <?php 
+                                                }
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
