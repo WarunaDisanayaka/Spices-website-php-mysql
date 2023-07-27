@@ -50,8 +50,11 @@
         }
 
 
-        public function getAllCat(){
-           
+        public function getAllProducts(){
+           $query="SELECT * FROM Product";
+           $result=$this->db->select($query);
+           return $result;
+
         }
 
 

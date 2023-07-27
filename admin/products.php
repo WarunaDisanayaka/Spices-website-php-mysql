@@ -1,3 +1,10 @@
+<?php include '../classes/Product.php'?>
+<?php include_once '../helpers/Format.php';?>
+<?php
+    $pd=new Product();
+    $fm=new Format();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,18 +42,38 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                          
                                             <th>ID</th>
-                                            <th>Categories</th>
                                             <th>Name</th>
+                                            <th>Description</th>
                                             <th>Image</th>
-                                            <th>MRP</th>
                                             <th>Price</th>
-                                            <th>Qty</th>
+                                            <th>Stock</th>
+                                            <th>Size</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                        <?php
+                                            $getPd=$pd->getAllProducts();
+                                            if ($getPd) {
+                                                $i=0;
+                                                while ($result=$getPd->fetch_assoc()) {
+                                                 $i++;   
+                                        ?>
+                                       <tr>
+                                          
+                                            <td><?php echo $result['CategoryId']?></td>
+                                            <td><?php echo $result['Name']?></td>
+                                            <td><?php echo $result['Description']?></td>
+                                            <td><img src="<?php echo $result['Image']?>"></td>
+                                            <td><?php echo $result['Price']?></td>
+                                            <td><?php echo $result['Stock']?></td>
+                                            <td><?php echo $result['Size']?></td>
+                                       </tr>
+                                       <?php
+                                             }
+                                            }
+                                       ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -67,12 +94,6 @@
                 </footer>
             </div>
          </div>
-
-
-
-
-
-
          <!--Navigation Bar-->
         <?php require('sidebar.inc.php');?>
          <!--Navigation Bar-->
