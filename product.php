@@ -18,8 +18,7 @@
                           <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                           <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                       </ul>
-                      <span class="product-new-label">Sale</span>
-                      <span class="product-discount-label">20%</span>
+                      
                   </div>
                   
                   <div class="product-content pb-4">
@@ -43,8 +42,7 @@
                           <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                           <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                       </ul>
-                      <span class="product-new-label">Sale</span>
-                      <span class="product-discount-label">50%</span>
+                     
                   </div>
                 
                   <div class="product-content pb-4">
@@ -68,8 +66,7 @@
                           <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                           <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                       </ul>
-                      <span class="product-new-label">Sale</span>
-                      <span class="product-discount-label">50%</span>
+                      
                   </div>
                  
                   <div class="product-content pb-4">
@@ -93,8 +90,7 @@
                           <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                           <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                       </ul>
-                      <span class="product-new-label">Sale</span>
-                      <span class="product-discount-label">50%</span>
+                      
                   </div>
                 
                   <div class="product-content pb-4">
@@ -122,8 +118,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">20%</span>
+                    
                 </div>
                 
                 <div class="product-content pb-4">
@@ -147,8 +142,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
+                   
                 </div>
               
                 <div class="product-content pb-4">
@@ -172,8 +166,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
+                   
                 </div>
                
                 <div class="product-content pb-4">
@@ -197,8 +190,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
+                    
                 </div>
               
                 <div class="product-content pb-4">
@@ -225,8 +217,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">20%</span>
+                    
                 </div>
                 
                 <div class="product-content pb-4">
@@ -250,8 +241,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
+                    
                 </div>
               
                 <div class="product-content pb-4">
@@ -275,8 +265,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
+                    
                 </div>
                
                 <div class="product-content pb-4">
@@ -300,8 +289,7 @@
                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
+                    
                 </div>
               
                 <div class="product-content pb-4">
