@@ -538,3 +538,18 @@
   }
 }
 
+
+.product-img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+
+/* Hero section */
+.hero {
+  background-size: cover;
+  background-position: center center;
+  width: auto;
+  height: 15rem;
+}
