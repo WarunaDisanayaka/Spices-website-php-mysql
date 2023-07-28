@@ -1,11 +1,15 @@
 <?php
+
+
     include 'lib/Session.php';
     Session::init();
     include 'lib/Database.php';
     include 'helpers/Format.php';
+    include 'config/config.php';
+
 
     spl_autoload_register(function($class){
-        include_once "classes/".$class.".php";
+        include "classes/".$class.".php";
     });
 
     $db=new Database();
