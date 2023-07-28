@@ -27,10 +27,7 @@
         <div class="collapse navbar-collapse bg-dark justify-content-end" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="product.php">Product</a>
@@ -42,7 +39,7 @@
                 <a class="nav-link" href="#">Shop</a>
               </li>  
             <li class="nav-item me-3 me-lg-0">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="cart.php">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
             </li>

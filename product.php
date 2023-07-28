@@ -9,7 +9,7 @@
           <div class="col-md-3 col-sm-6">
               <div class="product-grid">
                   <div class="product-image">
-                      <a href="#">
+                      <a href="singleproduct.php">
                         <img class="pic-1" src="img/25_2000x.webp">
                         <img class="pic-2" src="img/25_2000x.webp">
                       </a>
@@ -22,7 +22,7 @@
                   </div>
                   
                   <div class="product-content pb-4">
-                    <h3 class="title"><a href="#">Black Cardamom</a></h3>
+                    <h3 class="title"><a href="singleproduct.php">Black Cardamom</a></h3>
                       <div class="price">$16.00
                          
                       </div>
