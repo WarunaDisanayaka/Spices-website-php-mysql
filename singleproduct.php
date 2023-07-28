@@ -1,6 +1,19 @@
 <?php
     require 'navigation.php';
 ?>
+<?php
+    if (!isset($_GET['proid'])|| $_GET['proid']==NULL) {
+        echo "<script>window.location='product.php'</script>";
+    }else{
+        $id=$_GET['proid'];
+    }
+
+    if ($_SERVER['REQUEST_METHOD']=='POST') {
+      $quantity=$_POST['quantity'];
+      $addCat=$ct->addToCart($quantity,$id);
+   }
+
+?>
 <section class="hero" style="background-image: url('img/shopbanner.webp');">
    <div class="container">
       <div class="row align-items-center">
@@ -11,6 +24,12 @@
    </div>
 </section>
 <div class="container my-5">
+   <?php
+      $getPd=$pd->getProById($id);
+      if ($getPd) {
+         while ($result=$getPd->fetch_assoc()) {
+      
+   ?>
    <div class="row">
       <div class="col-md-6">
          <div class="carousel slide" data-bs-ride="carousel" id="productCarousel">
@@ -28,10 +47,12 @@
             <div class="col">
                <div class="images p-3">
                   <div class="text-center p-4">
-                     <img id="main-image" src="img/9_2000x.webp" class="product-img" alt="Product Image" class="d-block w-100" /> 
+                     <img id="main-image" src="admin/<?php echo $result['Image']; ?>" class="product-img" alt="Product Image" class="d-block w-100" /> 
                     </div>
-                  <div class="thumbnail text-center"> <img onclick="change_image(this)" src="vendordashboard/<?php echo $product_detials['image1']; ?>" width="70">
-                <img onclick="change_image(this)" src="vendordashboard/<?php echo $product_detials['image2']; ?>" width="70"> </div>
+                  <div class="thumbnail text-center"> 
+               <!-- <img onclick="change_image(this)" src="vendordashboard/" width="70">
+                <img onclick="change_image(this)" src="vendordashboard/" width="70">  -->
+               </div>
                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
@@ -45,31 +66,30 @@
          </div>
       </div>
       <div class="col-md-6">
-         <h2 class="fw-bold"> <?php  ?></h2>
-         <p class="lead">Rs <?php  ?></p>
+         <h2 class="fw-bold"><?php echo $result['Name']; ?></h2>
+         <p class="lead">Rs <?php echo $result['Price']; ?></p>
          <p><?php  ?></p>
          <div class="mb-3">
          </div>
          <div class="mb-3">
          </div>
          <div class="d-flex align-items-center">
-            <input type="number"  id="quantityInput"  style="width: 70px; margin-right:0.5rem;">
-            <form action="" class="add-cart">
-               <input type="hidden" name="pid" class="pid" value="<?php  ?>">
-               <input type="hidden" name="pname" class="pname" value="<?php  ?>">
-               <input type="hidden" name="pprice" class="pprice" value="<?php  ?>">
-               <input type="hidden" name="pimage" class="pimage" value="<?php  ?>">
-               <input type="hidden" name="selected_size" class="selected_size" id="selectedSizeInput">
-               <input type="hidden" id="qtyHidden" name="quantity" class="quantity">
-               <input type="hidden" name="user" id="user" value="<?php  ?>">
-               <button class="btn btn-primary me-3 addCart" onclick="return checkLogin1();">Add to Cart</button>
-               <button class="btn btn-secondary addFavourites" onclick="return checkLogin2();"><i class="bi bi-heart"></i> Add Wishlist</button>
+            <form action="" class="add-cart" method="post">
+            <input type="number" min="1" id="quantityInput" name="quantity"  style="width: 70px; margin-right:0.5rem;">
+               <input type="hidden" id="qtyHidden"  class="quantity">
+               <input type="hidden"  name="user" id="user" value="<?php  ?>">
+               <button class="btn btn-primary me-3 addCart">Add to Cart</button>
+               <button class="btn btn-secondary addFavourites"><i class="bi bi-heart"></i> Add Wishlist</button>
             </form>
          </div>
          <p class="mt-3"><small>Category: <?php  ?></small></p>
          
       </div>
    </div>
+   <?php
+         }
+      }
+   ?>
 </div>
 
 <?php
