@@ -14,6 +14,7 @@
     $fm=new Format();
     $pd=new Product();
     $ct= new Cart();
+    $cr=new Customer();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,7 @@
 
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark menu-bar fixed-top ">
       <div class="container-fluid ">
-        <a class="navbar-brand " href="#"><h1 class="logo text-light" style="font-family: 'Times New Roman', Times, serif;">Spices<span class=" text-warning">Hub</span></h1></a>
+        <!-- <a class="navbar-brand " href="#"><h1 class="logo text-light" style="font-family: 'Times New Roman', Times, serif;">Spices<span class=" text-warning">Hub</span></h1></a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>

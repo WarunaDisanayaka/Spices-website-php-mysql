@@ -1,6 +1,13 @@
 <?php
     require 'navigation.php';
 ?>
+<?php
+    $cr=new Customer();
+   if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])) {
+      $customerReg=$cr->customerRegistration($_POST);
+   }
+   
+?>
 <section class="hero" style="background-image: url('img/shopbanner.webp');">
    <div class="container">
       <div class="row align-items-center">
@@ -19,37 +26,43 @@
                <h5 class="card-title text-center">Create an account</h5>
                <?php
                   // Form is invalid. Show the errors to the user.
-                  if (!empty($errors)) {
+                  if ($customerReg) {
                     echo '<div class="alert alert-danger" role="alert">';
-                    foreach ($errors as $error) {
-                      echo '<p>' . $error . '</p>';
-                    }
-                    echo '</div>';
+                      echo  $customerReg;
+                    echo '</div>';  
                   }
                   ?>
-               <form method="POST" action="register.php">
+               <form method="POST">
                   <div class="mb-3">
                      <label for="username" class="form-label">Username</label>
                      <input type="text" class="form-control" id="username" name="username" value="<?php echo isset($username) ? $username : ''; ?>">
                   </div>
                   <div class="mb-3">
                      <label for="email" class="form-label">Email</label>
-                     <input type="email" class="form-control" id="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>">
+                     <input type="email" class="form-control" id="email" name="email">
                   </div>
                   <div class="mb-3">
                      <label for="phone" class="form-label">Phone</label>
-                     <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo isset($phone) ? $phone : ''; ?>">
+                     <input type="tel" class="form-control" id="phone" name="phone" >
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Address</label>
+                     <input type="text" class="form-control" id="address" name="address" >
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">City</label>
+                     <input type="text" class="form-control" id="city" name="city" >
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Zip Code</label>
+                     <input type="text" class="form-control" id="zip" name="zip" >
                   </div>
                   <div class="mb-3">
                      <label for="password" class="form-label">Password</label>
-                     <input type="password" class="form-control" id="password" name="password" value="<?php echo isset($password) ? $password : ''; ?>">
-                  </div>
-                  <div class="mb-3">
-                     <label for="confirm-password" class="form-label">Confirm Password</label>
-                     <input type="password" class="form-control" id="confirm-password" name="confirm-password" value="<?php echo isset($confirm_password) ? $confirm_password : ''; ?>">
+                     <input type="password" class="form-control" id="password" name="password" >
                   </div>
                   <div class="d-grid gap-2">
-                     <button type="submit" class="btn btn-lg btn-dark">Register</button>
+                     <button type="submit" name="submit" class="btn btn-lg btn-dark">Register</button>
                   </div>
                </form>
             </div>
