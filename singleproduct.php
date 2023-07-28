@@ -8,7 +8,7 @@
         $id=$_GET['proid'];
     }
 
-    if ($_SERVER['REQUEST_METHOD']=='POST') {
+   if ($_SERVER['REQUEST_METHOD']=='POST') {
       $quantity=$_POST['quantity'];
       $addCat=$ct->addToCart($quantity,$id);
    }
@@ -30,6 +30,7 @@
          while ($result=$getPd->fetch_assoc()) {
       
    ?>
+  
    <div class="row">
       <div class="col-md-6">
          <div class="carousel slide" data-bs-ride="carousel" id="productCarousel">
@@ -82,6 +83,11 @@
                <button class="btn btn-secondary addFavourites"><i class="bi bi-heart"></i> Add Wishlist</button>
             </form>
          </div>
+         <?php
+      if (isset($addCat)) {
+         echo $addCat;  
+      }
+   ?>
          <p class="mt-3"><small>Category: <?php  ?></small></p>
          
       </div>
