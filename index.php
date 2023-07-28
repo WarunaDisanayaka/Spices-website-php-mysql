@@ -1,6 +1,9 @@
 <?php
     include 'navigation.php';
 ?>
+<?php
+    echo session_id();
+?>
     <!-- homePage slide show -->
     <div id="carouselExampleIndicators" class="carousel slide h-50" data-bs-ride="carousel">
       <div class="carousel-indicators">
