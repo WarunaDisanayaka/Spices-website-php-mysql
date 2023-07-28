@@ -1,6 +1,19 @@
 <?php
     require 'navigation.php';
 ?>
+<?php
+    if (isset($_GET['remove'])) {
+      $cartId=$_GET['remove'];
+      $detProduct=$ct->delByCartId($cartId);
+    }
+?>
+<?php
+   if ($_SERVER['REQUEST_METHOD']=='POST') {
+      $cartId     =  $_POST['cartId'];
+      $quantity   =  $_POST['quantity'];
+      $updateCat  =  $ct->updateCartQty($cartId,$quantity);
+   }
+?>
 <section class="hero" style="background-image: url('img/shopbanner.webp');">
    <div class="container">
       <div class="row align-items-center">
@@ -26,18 +39,26 @@
                </thead>
                <tbody>
                   <?php
-                  
-
+                        $getProducts=$ct->getCartProduct();
+                        if ($getProducts) {
+                           $i=0;
+                           $sum=0;
+                           while ($result=$getProducts->fetch_assoc()) {
+                              $i++;
                      ?>
                      <tr>
-                        <td><?php  ?></td>
-                        <td><?php  ?></td>
+                        <td><?php echo $result['Name']  ?></td>
+                        <td><?php  echo $result['Price'] ?></td>
                         <td>
-                           <input type="number" class="form-control custom-input" min="1" value="<?php  ?>">
+                           <form action="" method="post">
+                              <input type="hidden" name="cartId" value="<?php  echo $result['Id']  ?>">
+                              <input type="number" class="form-control custom-input" min="1" name="quantity" value="<?php  echo $result['Qty']  ?>"><br>
+                              <input type="submit" name="submit" value="Update">
+                           </form>
                         </td>
-                        <td><?php  ?></td>
+                        <td><?php echo $total=$result['Price'] * $result['Qty'] ?></td>
                         <td>
-                           <a href="add_to_cart.php?remove=<? ?>" onclick="return confirm('Are you sure want to remove this item?')">
+                           <a href="?remove=<?php echo $result['Id'] ?>" onclick="return confirm('Are you sure want to remove this item?')">
                            <button class="btn btn-danger btn-remove" type="button">
                            <i class="fas fa-trash-alt"></i> 
                            </button>
@@ -45,14 +66,16 @@
                         </td>
                      </tr>
                      <?php
-                    
+                     $sum=$sum+$total;
+                       }
+                     }
                 
                   ?>
                </tbody>
                <tfoot>
                   <tr>
                      <td colspan="3" class="text-right"><strong>Total:</strong></td>
-                     <td><strong><?php  ?></strong></td>
+                     <td><strong><?php echo $sum; ?></strong></td>
                      <td></td>
                      <!-- empty cell for alignment -->
                   </tr>
@@ -64,19 +87,24 @@
          <!-- Product details section -->
          <h4>Product details</h4>
          <?php
-         
+         $getProducts=$ct->getCartProduct();
+         if ($getProducts) {
+            $i=0;
+            while ($result=$getProducts->fetch_assoc()) {
+               $i++;
             ?>
             <div class="row">
-               <p class="col-6"><?php ?>-<?php  ?></p>
-               <div class="col-6 text-right"><?php  ?></div>
+               <p class="col-6"><?php echo $result['Name'] ?>-<?php  echo $result['Price']  ?></p>
+               <div class="col-6 text-right"><?php  echo $result['Qty'] ?></div>
             </div>
             <?php
-        
+           }
+         }
          ?>
          <hr class="border-bottom">
          <div class="row">
             <div class="col-6"><strong>Total amount</strong></div>
-            <div class="col-6 text-right"><?php  ?></div>
+            <div class="col-6 text-right"><?php echo $sum;   ?></div>
          </div>
          <div class="text-center mt-4">
             <a href="checkout.php">
