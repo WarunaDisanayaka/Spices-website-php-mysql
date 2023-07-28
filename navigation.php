@@ -60,6 +60,12 @@
                     <i class="fas fa-shopping-cart"></i>
                 </a>
             </li>
+            <li class="nav-item me-3 me-lg-0">
+    <a class="nav-link" href="login.php">
+        <i class="fas fa-user"></i> <!-- Replace "fas fa-shopping-cart" with "fas fa-user" for the profile icon -->
+    </a>
+</li>
+
             <!-- <li class="nav-item dropdown bg-dark">
               <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
               <ul class="dropdown-menu bg-dark navbar-dark mt-2">
