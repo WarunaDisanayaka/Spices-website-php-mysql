@@ -62,7 +62,7 @@
   <section class="tasty_section">
    <div class="container_fluid">
      <h2>
-      spices Hub
+      spiceHub
      </h2>
    </div>
  </section>
