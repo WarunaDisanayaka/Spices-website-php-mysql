@@ -1,6 +1,4 @@
 <?php
-
-
     include 'lib/Session.php';
     Session::init();
     include 'lib/Database.php';
