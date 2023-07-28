@@ -1,8 +1,6 @@
 <?php
     include 'navigation.php';
 ?>
-
-
     <!-- homePage slide show -->
     <div id="carouselExampleIndicators" class="carousel slide h-50" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -77,11 +75,16 @@
         <h1 class="mb-5 pt-4">New arrivals</h1>
     </div>
     <div class="row">
+        <?php
+            $getProducts=$pd->getAllProducts();
+            if ($getProducts) {
+                while ($result=$getProducts->fetch_assoc()) {
+        ?>
         <div class="col-md-3 col-sm-6">
             <div class="product-grid2">
                 <div class="product-image2">
-                    <a href="#">
-                        <img class="pic-1" src="img/25_2000x.webp">
+                    <a href="singleproduct.php?proid=<?php echo $result['ProductID']?>">
+                        <img class="pic-1" src="admin/<?php echo $result['Image']?>">
                         <img class="pic-2" src="img/25_2000x.webp">
                     </a>
                     <ul class="social">
@@ -92,71 +95,16 @@
                     <a class="add-to-cart" href="">Add to cart</a>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">Black Cardamom</a></h3>
-                    <span class="price">$599.99</span>
+                    <h3 class="title"><a href="#"><?php echo $result['Name']?></a></h3>
+                    <span class="price">Rs <?php echo $result['Price']?></span>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid2">
-              <div class="product-image2">
-                  <a href="#">
-                      <img class="pic-1" src="img/33_2000x.webp">
-                      <img class="pic-2" src="img/33_2000x.webp">
-                  </a>
-                  <ul class="social">
-                      <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                      <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                      <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                  <a class="add-to-cart" href="">Add to cart</a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Pippali Pepper</a></h3>
-                    <span class="price">$699.99</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid2">
-                <div class="product-image2">
-                    <a href="#">
-                        <img class="pic-1" src="img/45_2000x.webp">
-                        <img class="pic-2" src="img/45_2000x.webp">
-                    </a>
-                    <ul class="social">
-                        <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                        <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <a class="add-to-cart" href="">Add to cart</a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Rosehip Berries</a></h3>
-                    <span class="price">$599.99</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid2">
-                <div class="product-image2">
-                    <a href="#">
-                        <img class="pic-1" src="img/9_2000x.webp">
-                        <img class="pic-2" src="img/9_2000x.webp">
-                    </a>
-                    <ul class="social">
-                        <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                        <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <a class="add-to-cart" href="">Add to cart</a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Red Chilly</a></h3>
-                    <span class="price">$599.99</span>
-                </div>
-            </div>
-        </div>
+        <?php
+                 }
+            }
+        ?>
+
     </div>
 </div>
 <hr>
