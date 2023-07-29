@@ -24,7 +24,7 @@
             $password=mysqli_real_escape_string($this->db->link,md5($data['password']));
             
             if ($username == "" || $email== "" || $phone== "" || $address== "" || $city== "" || $zip== "" ||$password== "" ) {
-                $msg="Fields must not be empty !";
+                $msg="<p class='text' style='color:red;'>Fields must not be empty! </p>";
                 return $msg;
             }else{
     
@@ -51,6 +51,34 @@
                 
             }
         }
+
+        public function customerLogin($data){
+
+            $email=mysqli_real_escape_string($this->db->link,$data['email']);
+            $password=mysqli_real_escape_string($this->db->link,md5($data['password']));
+            
+            if ($email== "" || $password== "" ) {
+                $msg="<p class='text' style='color:red;'>Fields must not be empty! </p>";
+                return $msg;
+            }else{
+    
+                $query = "SELECT * FROM Buyer WHERE email='$email' LIMIT 1";
+                $result = $this->db->select($query);
+
+                if ($result !=false) {
+                    $value=$result->fetch_assoc();
+                    Session::set("cuslogin",true);
+                    Session::set("cusId",$value['BuyerID']);
+                    Session::set("cusName",$value['Username']);
+                    header("Location:profile.php");
+                }else{
+                    $msg="<p class='text' style='color:red;'>Email or Password Not matched! </p>";
+                    return $msg;
+                }
+            }
+        }
+
+
         
     }
 ?>

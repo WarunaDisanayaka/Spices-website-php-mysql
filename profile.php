@@ -1,6 +1,12 @@
 <?php
     require 'navigation.php';
 ?>
+<?php
+    $login = Session::get("cuslogin");
+    if ($login == false) {
+        header("Location:login.php");
+    }
+?>
 <section class="hero" style="background-image: url('img/shopbanner.webp');">
    <div class="container">
       <div class="row align-items-center">
