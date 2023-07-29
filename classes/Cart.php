@@ -80,5 +80,11 @@
             }
         }
 
+        public function delCustomerData(){
+            $sId=session_id();
+            $query="DELETE FROM Cart WHERE Sid='$sId'";
+            $this->db->delete($query);
+        }
+
     }
 ?>
