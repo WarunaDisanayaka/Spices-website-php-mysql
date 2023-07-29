@@ -7,6 +7,12 @@
         header("Location:login.php");
     }
 ?>
+<?php
+   if (isset($_GET['cid'])) {
+      $delCartData=$ct->delCustomerData();
+      Session::destroy();
+   }
+?>
 <section class="hero" style="background-image: url('img/shopbanner.webp');">
    <div class="container">
       <div class="row align-items-center">
@@ -28,13 +34,13 @@
          <button class="nav-link" id="menu1-tab" data-bs-toggle="tab" data-bs-target="#menu3" type="button" role="tab" aria-controls="menu3" aria-selected="false">Profile</button>
       </li>
       <li class="nav-item">
-         <a href="logout.php"><button class="nav-link" id="menu2-tab" data-bs-toggle="tab" data-bs-target="#menu2" type="button" role="tab" aria-controls="menu2" aria-selected="false">Logout</button></a>
+         <a href="?cid=<?php Session::get('cusId')?>"><button class="nav-link" id="menu2-tab" data-bs-toggle="tab" data-bs-target="#menu2" type="button" role="tab" aria-controls="menu2" aria-selected="false">Logout</button></a>
       </li>
    </ul>
    <div class="tab-content">
       <div id="home" class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
          <h3>Dashboard</h3>
-         <p>Hi welcome <?php echo $row['username'] ?> </p>
+         <p>Hi welcome  </p>
       </div>
       <div id="menu1" class="tab-pane fade" role="tabpanel" aria-labelledby="menu1-tab">
          <h3>Orders</h3>
