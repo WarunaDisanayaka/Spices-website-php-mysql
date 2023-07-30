@@ -76,7 +76,7 @@
          </div>
          <div class="d-flex align-items-center">
             <form action="" class="add-cart" method="post">
-            <input type="number" min="1" id="quantityInput" name="quantity"  style="width: 70px; margin-right:0.5rem;">
+            <input type="number" min="1" id="quantityInput" name="quantity" value="1"  style="width: 70px; margin-right:0.5rem;">
                <input type="hidden" id="qtyHidden"  class="quantity">
                <input type="hidden"  name="user" id="user" value="<?php  ?>">
                <button class="btn btn-primary me-3 addCart">Add to Cart</button>
@@ -88,8 +88,8 @@
          echo $addCat;  
       }
    ?>
-         <p class="mt-3"><small>Category: <?php  ?></small></p>
-         
+         <p class="mt-3"><small>Size: <?php echo $result['Size'];   ?></small></p>
+         <p><?php echo $result['Description'];   ?></p>
       </div>
    </div>
    <?php

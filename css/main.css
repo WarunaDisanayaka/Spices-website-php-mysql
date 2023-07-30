@@ -1,3 +1,11 @@
+/* Import Roboto font from Google Fonts (optional) */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Rubik', sans-serif !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -58,8 +66,6 @@
   text-align: justify;
 }
 
-
-
 /* tasty section */
 .tasty_section {
   width: 100%;
@@ -78,8 +84,6 @@
   color: #e3e647;
   text-transform: uppercase;
 }
-
-
 
 /* end tasty section */
 /*** Service ***/
