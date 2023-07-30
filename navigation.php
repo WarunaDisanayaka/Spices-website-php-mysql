@@ -5,6 +5,9 @@
     include 'helpers/Format.php';
     include 'config/config.php';
 
+    
+error_reporting(E_ALL & ~E_NOTICE);
+ini_set('display_errors', 0);
 
     spl_autoload_register(function($class){
         include "classes/".$class.".php";

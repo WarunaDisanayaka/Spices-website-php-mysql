@@ -1,6 +1,9 @@
 <?php
     include '../lib/Session.php';
     Session::checkSession();
+    
+error_reporting(E_ALL & ~E_NOTICE);
+ini_set('display_errors', 0);
 ?>
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
