@@ -93,23 +93,35 @@
                               <label for="exampleInputEmail1">Stock</label>
                               <input type="text" name="qty" class="form-control" value="<?php echo $value['Stock'] ?>"  placeholder="Enter Qty">
                            </div>
-
                            <div class="form-group w-50">
-                              <label for="exampleInputEmail1">Image</label>
-                              <img src="<?php echo $value['Image'] ?>" style="width:80px">
-                              <input type="file" name="image" class="form-control">
-                             
-                           </div>
+  <label for="exampleInputEmail1">Image</label>
+  <img id="previewImage" src="<?php echo $value['Image'] ?>" style="width: 80px">
+  <a href="javascript:void(0);" onclick="selectImage()">Change Image</a>
+  <input type="file" name="image" id="imageInput" class="form-control" style="display: none;">
+</div>
+
+
 
                            <div class="form-group w-50">
                               <label for="exampleInputEmail1">Description</label>
-                              <textarea type="text" name="description" class="form-control" value="<?php echo $value['Description'] ?>"  placeholder="Enter Description"></textarea>
+                              <input type="text" name="description" class="form-control" value="<?php echo $value['Description'] ?>"  placeholder="Enter Description">
                            </div>
                            
+                           
                            <div class="form-group w-50">
-                              <label for="exampleInputEmail1">Size</label>
-                              <textarea type="text" name="size" class="form-control" value="<?php echo $value['Size'] ?>"  placeholder="Enter Size" ></textarea>
-                           </div>
+  <label>Grams</label><br>
+  <?php
+// Assuming $value['Size'] contains the sizes retrieved from the database, e.g., '100g, 250g, 500g'
+$selectedSizes = $value['Size'];
+?>
+
+  <input type="checkbox" name="grams[]" value="100g" <?php if (strpos($selectedSizes, '100g') !== false) echo 'checked'; ?>> 100g<br>
+  <input type="checkbox" name="grams[]" value="250g" <?php if (strpos($selectedSizes, '250g') !== false) echo 'checked'; ?>> 250g<br>
+  <input type="checkbox" name="grams[]" value="500g" <?php if (strpos($selectedSizes, '500g') !== false) echo 'checked'; ?>> 500g<br>
+  <input type="checkbox" name="grams[]" value="1kg" <?php if (strpos($selectedSizes, '1kg') !== false) echo 'checked'; ?>> 1kg<br>
+</div>
+
+
 
                            <div class="cat-btn">
                               <button type="submit" name="submit" class="btn btn-success">Update</button>
@@ -148,5 +160,34 @@
       <script src="assets/demo/chart-bar-demo.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
       <script src="js/datatables-simple-demo.js"></script>
+      
+      <script>
+function selectImage() {
+  const fileInput = document.getElementById('imageInput');
+  fileInput.click();
+}
+
+// Update the image preview when a new image is selected
+document.getElementById('imageInput').addEventListener('change', function() {
+  const previewImage = document.getElementById('previewImage');
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function() {
+      previewImage.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Optional: Show the previously selected image thumbnail on page load
+window.addEventListener('DOMContentLoaded', function() {
+  const currentImageUrl = "<?php echo $value['Image']; ?>";
+  const previewImage = document.getElementById('previewImage');
+  previewImage.src = currentImageUrl;
+});
+</script>
+
+
    </body>
 </html>

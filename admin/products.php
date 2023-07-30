@@ -49,7 +49,7 @@
                                     <thead>
                                         <tr>
                                           
-                                            <th>ID</th>
+                                            
                                             <th>Name</th>
                                             <th>Description</th>
                                             <th>Image</th>
@@ -69,7 +69,7 @@
                                         ?>
                                        <tr>
                                           
-                                            <td><?php echo $result['CategoryId']?></td>
+                                          
                                             <td><?php echo $result['Name']?></td>
                                             <td><?php echo $result['Description']?></td>
                                             <td><img src="<?php echo $result['Image']?>"></td>
