@@ -13,6 +13,14 @@
       Session::destroy();
    }
 ?>
+
+<?php
+   if (isset($_POST['submit'])) {
+      $id=$_POST['id'];
+      $updateCustData=$ct->updateCustomerData($_POST,$id);
+
+   }
+?>
 <section class="hero" style="background-image: url('img/shopbanner.webp');">
    <div class="container">
       <div class="row align-items-center">
@@ -71,20 +79,72 @@
          </div>
       </div>
       <div id="menu3" class="tab-pane fade" role="tabpanel" aria-labelledby="menu1-tab">
-         <h3>Design Orders</h3>
+         <h3>Profile Details</h3>
          <div class="container-fluid">
             <!-- Content Row -->
             <div class="row">
                <table class="table">
-                  <thead class="thead-dark">
-                     <tr>
-                        <th scope="col">Design</th>
-                        <th scope="col">Product price</th>
-                        <th scope="col">Status</th>
-                     </tr>
-                  </thead>
                   <tbody>
-                     
+                  <div class="container mt-5">
+   <div class="row ">
+      <div class="col-md-6 col-lg-5">
+         <div class="card border-0">
+            <div class="card-body">
+               <h5 class="card-title text-center"></h5>
+               <?php 
+                                 if (isset($updateCustData)) {
+                                    echo $updateCustData;
+                                 }
+                           ?>
+                  <?php
+                     $id=Session::get("cusId");
+                     $getdata=$cr->getCustomerData($id);
+                     if ($getdata) {
+                        while ($result=$getdata->fetch_assoc()) {
+                  ?>
+               <form method="POST">
+                  <div class="mb-3">
+                     <label for="username" class="form-label">Username</label>
+                     <input type="text" class="form-control" id="username" name="username" value="<?php echo $result['Username']?>">
+                     <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $result['BuyerID']?>">
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Email</label>
+                     <input type="email" class="form-control" id="email" name="email" value="<?php echo $result['Email']?>">
+                  </div>
+                  <div class="mb-3">
+                     <label for="phone" class="form-label">Phone</label>
+                     <input type="tel" class="form-control" id="phone" name="phone"  value="<?php echo $result['Phone']?>" >
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Address</label>
+                     <input type="text" class="form-control" id="address" name="address"  value="<?php echo $result['Address']?>" >
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">City</label>
+                     <input type="text" class="form-control" id="city" name="city" value="<?php echo $result['City']?>" >
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Zip Code</label>
+                     <input type="text" class="form-control" id="zip" name="zip" value="<?php echo $result['Zip']?>" >
+                  </div>
+                  <div class="mb-3">
+                     <label for="password" class="form-label">Password</label>
+                     <input type="text" class="form-control" id="password" name="password"  >
+                  </div>
+                  <div class="d-grid gap-2">
+                     <button type="submit" name="submit" class="btn btn-lg btn-dark">Update</button>
+                  </div>
+               </form>
+               <?php
+                     }
+                  }
+               ?>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
                   </tbody>
                </table>
             </div>
