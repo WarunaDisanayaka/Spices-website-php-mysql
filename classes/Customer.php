@@ -134,5 +134,54 @@
                 
             }
 
+
+
+            public function sellerRegistration($data){
+
+                $username=mysqli_real_escape_string($this->db->link,$data['username']);
+                $email=mysqli_real_escape_string($this->db->link,$data['email']);
+                $phone=mysqli_real_escape_string($this->db->link,$data['phone']);
+                $address=mysqli_real_escape_string($this->db->link,$data['address']);
+                $password=mysqli_real_escape_string($this->db->link,md5($data['password']));
+                
+                if ($username == "" || $email== "" || $phone== "" || $address== ""  ||$password== "" ) {
+                    $msg="<p class='text' style='color:red;'>Fields must not be empty! </p>";
+                    return $msg;
+                }else{
+        
+                    $mailCheckquery = "SELECT * FROM Seller WHERE Email='$email' LIMIT 1";
+                    $mailCheck = $this->db->select($mailCheckquery);
+    
+                    if ($mailCheck !=false) {
+                        $msg="Email already exist";
+                        return $msg;
+                    }else{
+                        $query="INSERT INTO Seller(Username,Password,Email,Phone,Address) 
+                    VALUES('$username','$password','$email','$phone','$address')";
+    
+                    $customerinsert=$this->db->insert($query);
+                    if ($customerinsert) {
+                   // Sending email notification
+                   $emailSubject = "Registration Successful";
+                   $emailBody = "Dear $username,\n\nThank you for registering on our website. Your account has been successfully created.";
+                   $emailHeaders = "From: waruna@gmail.com"; // Replace with your email address
+    
+                   if (mail($email, $emailSubject, $emailBody, $emailHeaders)) {
+                       $msg = "Customer Registered Successfully. An email notification has been sent.";
+                   } else {
+                       $msg = "Customer Registered Successfully, but the email notification could not be sent.";
+                   }
+    
+                   return $msg;
+                }else{
+                    $msg="Customer Not Registered";
+                return $msg;
+                    }
+                }
+    
+                    
+                }
+            }
+
     }
 ?>
