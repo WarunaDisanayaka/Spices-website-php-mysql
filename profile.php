@@ -65,6 +65,23 @@
                      </tr>
                   </thead>
                   <tbody>
+                  <?php
+                     $cusId=Session::get("cusId");
+                     $getOrders=$ct->getOrders($cusId);
+                     if ($getOrders) {
+                        while ($result=$getOrders->fetch_assoc()) {
+                        
+                  ?>
+                  <tr>
+                                                <td><?php echo $result['ProductName']; ?></td>
+                                                <td><?php echo $result['Price']; ?></td>
+                                                <td><?php echo $result['Quantity']; ?></td>
+                                                <td><?php echo $result['Status']; ?></td>
+                                             </tr>
+                                             <?php
+                                                   }
+                                                } 
+                                             ?>
                   </tbody>
                </table>
             </div>

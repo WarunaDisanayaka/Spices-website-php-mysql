@@ -12,6 +12,7 @@
         $cusId=Session::get("cusId");
         $insertOrder=$ct->orderProduct($cusId);
         $delCartData=$ct->delCustomerData();
+        header("Location:profile.php");
      }
 ?>
 <!-- Hero section start-->
