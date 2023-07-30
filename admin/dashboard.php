@@ -142,48 +142,9 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-sm-6 col-12 mt-3">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">No of Plant Distributors</span>
-                                        <span class="h3 font-bold mb-0"></span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
-                                            <i class="bi bi-people"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-2 mb-0 text-sm">
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
-                    <div class="col-xl-3 col-sm-6 col-12 mt-3">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">No of Landscape architecture</span>
-                                        <span class="h3 font-bold mb-0"></span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
-                                            <i class="bi bi-people"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-2 mb-0 text-sm">
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     
                         </div>
