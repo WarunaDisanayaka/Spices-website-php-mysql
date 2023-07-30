@@ -68,5 +68,10 @@ public function insert($query){
    return false;
   }
  }
+
+ public function sanitize($data)
+    {
+        return $this->link->real_escape_string($data);
+    }
  
 }
