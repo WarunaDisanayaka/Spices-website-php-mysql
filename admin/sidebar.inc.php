@@ -64,7 +64,7 @@
                             </a>
                             <a class="nav-link" href="users.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                                Users
+                                Buyers
                             </a>
                         </div>
                     </div>

@@ -1,51 +1,4 @@
-<?php
-    require('connection.inc.php');
-    require('functions.inc.php');
-    require('session.php');
-    
-    //Active & Deactive 
-    if (isset($_GET['type']) && $_GET['type']!='') {
-        $type=get_safe_value($con,$_GET['type']);
-        if ($type=='status') {
-            $operation=get_safe_value($con,$_GET['operation']);
-            $id=get_safe_value($con,$_GET['id']);
-            if ($operation=='active') {
-                $status='Accepted';
-                $update_status="UPDATE `order` SET order_status='$status' WHERE id='$id'";
-                if(mysqli_query($con,$update_status)){
-                    echo"<script>
-                        alert('Order Accepted success');
-                    </script>";
-                }
-            }else{
-                $status='Pending';
-                $update_status="UPDATE `order` SET order_status='$status' WHERE id='$id'";
-                if(mysqli_query($con,$update_status)){
-                    echo"<script>
-                        alert('Order Set to Pending');
-                    </script>";
-                }
-            }
-            
-        }
-
-
-        //Delete
-        if ($type=='delete') {
-            $id=get_safe_value($con,$_GET['id']);
-            $delete_sql="DELETE FROM `order` WHERE id='$id'";
-            if(mysqli_query($con,$delete_sql)){
-                echo"<script>
-                    alert('Deleted success');
-                </script>";
-            }
-        }
-    }
-
-
-    $sql="SELECT * FROM `users`";
-    $res=mysqli_query($con,$sql);
-?>
+<?php include '../classes/Customer.php'?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -68,16 +21,16 @@
          <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Users</h1>
+                        <h1 class="mt-4">Buyers</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Buyers</li>
                         </ol>
                     
                 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Users List
+                                Buyers List
                             </div>
                             <div class="card-body product-tbl">
                                 <table id="datatablesSimple">
@@ -88,38 +41,41 @@
                                             <th>Email</th>
                                             <th>Mobile</th>
                                             <th>Location</th>
-                                            <th>About</th>
-                                            <th>User Role</th>
-                                            <th>Reg Date</th>    
+                                          
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        $i=1;
-                                        while($row=mysqli_fetch_assoc($res)) {
-                                            
+                                         $cus = new Customer();
+                                        $getCus=$cus->getAllCustomer();
+                                        if ($getCus) {
+                                            $i=0;
+                                            while ($result=$getCus->fetch_assoc()) {
+                                             $i++;   
+                                
                                         ?>
                                         <tr>
-                                            <td><?php echo $i;?></td>
+                                            <td><?php ?></td>
                                            
-                                            <td><?php echo $row['name']?></td>
-                                            <td><?php echo $row['email'];?></td>
-                                            <td><?php echo $row['mobile']?></td>
-                                            <td><?php echo $row['location'];?></td>
-                                            <td><?php echo $row['about'];?></td>
-                                            <td><?php echo $row['type'];?></td> 
-                                            <td><?php echo $row['added_on'];?></td> 
-                                            <td>
+                                            <td><?php echo $result['Username']; ?></td>
+                                            <td><?php echo $result['Email'] ?></td>
+                                            <td><?php echo $result['Phone'] ?></td>
+                                            <td><?php echo $result['Address'] ?></td>
+                                           
+                                            <!-- <td>
                                                 <div class="option-btn">
                                                 <?php 
                             
-                                                    echo "<span class='btn  delete-btn'><a href='?type=delete&id=".$row['id']."'>Delete</a></span> ";
+                                                    // echo "<span class='btn  delete-btn'><a href='?type=delete&id="."'>Delete</a></span> ";
                                                    
                                                  ?>
                                                 </div>
-                                            </td>
+                                            </td> -->
                                         </tr>
-                                        <?php $i++; } ?>
+                                        <?php 
+                                            }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

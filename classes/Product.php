@@ -80,7 +80,6 @@
             $description=mysqli_real_escape_string($this->db->link,$data['description']);
             $price=mysqli_real_escape_string($this->db->link,$data['price']);
             $stock=mysqli_real_escape_string($this->db->link,$data['qty']);
-            $size=mysqli_real_escape_string($this->db->link,$data['size']);
 
             $premited=array('jpg','jpeg','png','gif');
             $file_name=$_FILES['image']['name'];
@@ -91,6 +90,9 @@
             $file_ext=strtolower(end($div));
             $unique_image=substr(md5(time()),0,10).'.'.$file_ext;
             $uploaded_image="upload/".$unique_image;
+
+            $grams = isset($data['grams']) ? $data['grams'] : array();
+            $size = implode(", ", $grams);
 
             if ($productName == "" || $catId=="" ||  $description=="" || $price=="" || $stock=="" || $size=="" ) {
                 $msg="Fields must not be empty !";

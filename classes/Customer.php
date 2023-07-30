@@ -94,6 +94,13 @@
             return $result;
         }
 
+
+        public function getAllCustomer(){
+            $query="SELECT * FROM Buyer";
+            $result=$this->db->select($query);
+            return $result;
+        }
+
         public function updateCustomerData($data,$id){
 
             $username=mysqli_real_escape_string($this->db->link,$data['username']);
