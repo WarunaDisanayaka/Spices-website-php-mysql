@@ -40,8 +40,18 @@
 
                 $customerinsert=$this->db->insert($query);
                 if ($customerinsert) {
-                $msg="Customer Registered Successfully";
-                return $msg;
+               // Sending email notification
+               $emailSubject = "Registration Successful";
+               $emailBody = "Dear $username,\n\nThank you for registering on our website. Your account has been successfully created.";
+               $emailHeaders = "From: waruna@gmail.com"; // Replace with your email address
+
+               if (mail($email, $emailSubject, $emailBody, $emailHeaders)) {
+                   $msg = "Customer Registered Successfully. An email notification has been sent.";
+               } else {
+                   $msg = "Customer Registered Successfully, but the email notification could not be sent.";
+               }
+
+               return $msg;
             }else{
                 $msg="Customer Not Registered";
             return $msg;

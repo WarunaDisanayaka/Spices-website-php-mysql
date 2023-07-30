@@ -86,5 +86,38 @@
             $this->db->delete($query);
         }
 
+
+        public function orderProduct($cusId) {
+            $sId = session_id();
+            $query = "SELECT * FROM Cart WHERE Sid='$sId'";
+            $getPro = $this->db->select($query);
+            if ($getPro) {
+                while ($result = $getPro->fetch_assoc()) {
+                    $productId = $result['ProductID'];
+                    $productName = $result['Name'];
+                    $quantity = $result['Qty'];
+                    $price = $result['Price'];
+                    // $image=$result['Image'];
+                    $total = $quantity * $price;
+                    $status = "pending";
+        
+                    $query = "INSERT INTO 
+                    Orders
+                    (BuyerID, ProductID, ProductName, Quantity, Price, Total, Status)
+                    VALUES
+                    ('$cusId', '$productId', '$productName', '$quantity', '$price', '$total', '$status')";
+        
+                    $addOrder = $this->db->insert($query);
+                    if (!$addOrder) {
+                        $msg = "Category Not Inserted";
+                        return $msg;
+                    }
+                }
+                $msg = "Category Inserted Successfully";
+                return $msg;
+            }
+        }
+        
+
     }
 ?>
