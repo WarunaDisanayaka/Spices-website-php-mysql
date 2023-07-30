@@ -117,6 +117,13 @@
                 return $msg;
             }
         }
+
+
+        public function getOrders($cusId){
+                $query="SELECT * FROM Orders WHERE BuyerID='$cusId'";
+                $result=$this->db->select($query);
+                return $result;
+        }
         
 
     }
