@@ -2,6 +2,11 @@
     require 'navigation.php';
 ?>
 <?php
+    $login = Session::get("cuslogin");
+    if ($login == false) {
+    }
+?>
+<?php
     if (isset($_GET['remove'])) {
       $cartId=$_GET['remove'];
       $detProduct=$ct->delByCartId($cartId);
@@ -107,10 +112,15 @@
             <div class="col-6 text-right"><?php echo $sum;   ?></div>
          </div>
          <div class="text-center mt-4">
-            <a href="checkout.php">
-            <button class="btn btn-primary">PROCEED TO CHECKOUT</button>
-            </a>
-         </div>
+    <?php
+        if ($login == true) {
+            echo '<a href="checkout.php"><button class="btn btn-primary">PROCEED TO CHECKOUT</button></a>';
+        } else {
+            echo '<a href="login.php" style="text-decoration: none; color: blue;">Please login to proceed to checkout.</a>';
+        }
+    ?>
+</div>
+
       </div>
    </div>
 </div>
