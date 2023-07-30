@@ -18,7 +18,7 @@
               <div class="col-lg-3 col-md-6">
                   <h4 class="text-warning mb-4">Quick Links</h4>
                   <a class="btn btn-link" href="sellerregister.php">Register as Seller</a>
-                  <a class="btn btn-link" href="">Contact Us</a>
+                  <a class="btn btn-link" href="seller">Seller Login</a>
                   <a class="btn btn-link" href="">Our Services</a>
                   <a class="btn btn-link" href="">Terms & Condition</a>
                   <a class="btn btn-link" href="">Support</a>

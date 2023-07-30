@@ -15,21 +15,21 @@
     <div class="carousel-item active">
       <img src="img/slider1_1.webp" class="d-block w-100" alt="...">
       <div class="carousel-caption">
-        <h1>Slide 1 Title</h1>
+        <h1>500 Spices,Herbs & Seasonings</h1>
        
       </div>
     </div>
     <div class="carousel-item">
       <img src="img/slider2_1.webp" class="d-block w-100" alt="...">
       <div class="carousel-caption">
-        <h1>Slide 2 Title</h1>
+        <h1>Enhance Your Culinary Creations with Premium Spices & Herbs!</h1>
        
       </div>
     </div>
     <div class="carousel-item">
       <img src="img/slider3_1.webp" class="d-block w-100" alt="...">
       <div class="carousel-caption">
-        <h1>Slide 3 Title</h1>
+        <h1>Spice up Your Life: 500 Exquisite Flavors Await!</h1>
     
       </div>
     </div>
@@ -92,7 +92,7 @@
     </div>
     <div class="row">
         <?php
-            $getProducts=$pd->getAllProducts();
+            $getProducts=$pd->getNewProducts();
             if ($getProducts) {
                 while ($result=$getProducts->fetch_assoc()) {
         ?>
@@ -101,7 +101,7 @@
                 <div class="product-image2">
                     <a href="singleproduct.php?proid=<?php echo $result['ProductID']?>">
                         <img class="pic-1" src="admin/<?php echo $result['Image']?>">
-                        <img class="pic-2" src="img/25_2000x.webp">
+                        
                     </a>
                     <ul class="social">
                         <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
@@ -140,7 +140,7 @@
                          </div>
                          <div class="service-text p-5 pt-0">
                              <div class="service-icon">
-                                 <img class="img-fluid rounded-circle" src="img/article.jpg" alt="">
+                                 <img class="img-fluid rounded-circle" src="img/9_2000x.webp" alt="">
                              </div>
                              <h5 class="mb-3">Spice Product Sales:</h4>
                              <p class="mb-4">Offer a platform to sell a wide range of spices, including popular ones like cinnamon, turmeric, cumin, and paprika. Provide detailed descriptions, images, and pricing information for each spice. 
@@ -156,7 +156,7 @@
                          </div>
                          <div class="service-text p-5 pt-0">
                              <div class="service-icon">
-                              <img class="img-fluid rounded-circle" src="img/article.jpg" alt="">
+                              <img class="img-fluid rounded-circle" src="img/33_2000x.webp" alt="">
                              </div>
                              <h5 class="mb-3">Spice Product Sales:</h4>
                               <p class="mb-4">Offer a platform to sell a wide range of spices, including popular ones like cinnamon, turmeric, cumin, and paprika. Provide detailed descriptions, images, and pricing information for each spice. 
