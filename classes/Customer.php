@@ -78,7 +78,51 @@
             }
         }
 
+        public function getCustomerData($id){
+            $query="SELECT * FROM Buyer WHERE BuyerID='$id'";
+            $result=$this->db->select($query);
+            return $result;
+        }
 
-        
+        public function updateCustomerData($data,$id){
+
+            $username=mysqli_real_escape_string($this->db->link,$data['username']);
+            $email=mysqli_real_escape_string($this->db->link,$data['email']);
+            $phone=mysqli_real_escape_string($this->db->link,$data['phone']);
+            $address=mysqli_real_escape_string($this->db->link,$data['address']);
+            $city=mysqli_real_escape_string($this->db->link,$data['city']);
+            $zip=mysqli_real_escape_string($this->db->link,$data['zip']);
+            $password=mysqli_real_escape_string($this->db->link,md5($data['password']));
+            
+            if ($username == "" || $email== "" || $phone== "" || $address== "" || $city== "" || $zip== "" ||$password== "" ) {
+                $msg="<p class='text' style='color:red;'>Fields must not be empty! </p>";
+                return $msg;
+            }else{
+    
+                $query = "UPDATE 
+                Buyer SET 
+                Username='$username', 
+                Password='$password', 
+                Email='$email', 
+                Phone='$phone' ,
+                Address='$address', 
+                City='$city', 
+                Zip='$zip'  
+                WHERE BuyerID='$id'";
+
+                $updateCustomer = $this->db->update($query);
+
+                if ($updateCustomer) {
+                $msg="Customer Updated Successfully";
+                return $msg;
+            }else{
+                $msg="Customer Not Updated";
+            return $msg;
+                }
+            }
+
+                
+            }
+
     }
 ?>
