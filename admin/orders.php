@@ -1,51 +1,15 @@
+<?php include '../classes/Cart.php'?>
 <?php
-    require('connection.inc.php');
-    require('functions.inc.php');
-    require('session.php');
-    
-    //Active & Deactive 
-    if (isset($_GET['type']) && $_GET['type']!='') {
-        $type=get_safe_value($con,$_GET['type']);
-        if ($type=='status') {
-            $operation=get_safe_value($con,$_GET['operation']);
-            $id=get_safe_value($con,$_GET['id']);
-            if ($operation=='active') {
-                $status='Accepted';
-                $update_status="UPDATE `order` SET order_status='$status' WHERE id='$id'";
-                if(mysqli_query($con,$update_status)){
-                    echo"<script>
-                        alert('Order Accepted success');
-                    </script>";
-                }
-            }else{
-                $status='Pending';
-                $update_status="UPDATE `order` SET order_status='$status' WHERE id='$id'";
-                if(mysqli_query($con,$update_status)){
-                    echo"<script>
-                        alert('Order Set to Pending');
-                    </script>";
-                }
-            }
-            
-        }
+   $ct = new Cart();
+   if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])) {
+    $orderId=$_POST['OrderID'];
+    $status=$_POST['status'];
+    $updateStatus=$ct->updateOrder($orderId,$status);
 
-
-        //Delete
-        if ($type=='delete') {
-            $id=get_safe_value($con,$_GET['id']);
-            $delete_sql="DELETE FROM `order` WHERE id='$id'";
-            if(mysqli_query($con,$delete_sql)){
-                echo"<script>
-                    alert('Deleted success');
-                </script>";
-            }
-        }
-    }
-
-
-    $sql="SELECT * FROM `order`";
-    $res=mysqli_query($con,$sql);
+   }
+   
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -66,7 +30,7 @@
 
          <div id="layoutSidenav">
          <div id="layoutSidenav_content">
-                <main>
+         <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Orders</h1>
                         <ol class="breadcrumb mb-4">
@@ -77,19 +41,19 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Orders
+                                Order List
                             </div>
                             <div class="card-body product-tbl">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
+                                          
+                                          
+                                            <th>Product</th>
+                                            <th>Customer Name</th>
                                             <th>Address</th>
                                             <th>City</th>
-                                            <th>Payment Type</th>
                                             <th>Phone</th>
-                                            <th>Payment Status</th>
                                             <th>Total</th>
                                             <th>Order Status</th>
                                             <th>Date</th>
@@ -97,38 +61,42 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
-                                        $i=1;
-                                        while($row=mysqli_fetch_assoc($res)) {
-                                            
+                                        <?php
+                                            $ct = new Cart();
+                                            $getOrders=$ct->getAllOrders();
+                                            if ($getOrders) {
+                                                $i=0;
+                                                while ($result=$getOrders->fetch_assoc()) {
+                                                 $i++;   
                                         ?>
-                                        <tr>
-                                            <td><?php echo $i;?></td>
-                                           
-                                            <td><?php echo $row['first_name'].' '.$row['last_name'];?></td>
-                                            <td><?php echo $row['address_one'].','.$row['address_two'];?></td>
-                                            <td><?php echo $row['city']?></td>
-                                            <td><?php echo $row['payment_type'];?></td>
-                                            <td><?php echo $row['phone'];?></td>
-                                            <td><?php echo $row['payment_status'];?></td> 
-                                            <td><?php echo'Rs'.$row['total_price'];?></td> 
-                                            <td><?php echo $row['order_status'];?></td> 
-                                            <td><?php echo $row['added_on'];?></td> 
+                                       <tr>
+                                          
+                                            <td><?php echo $result['ProductName']?></td>
+                                            <td><?php echo $result['Username']?></td>
+                                            <td><?php echo $result['Address']?></td>
+                                            <td><?php echo $result['City']?></td>
+                                            <td><?php echo $result['Phone']?></td>
+                                            <td><?php echo $result['Total']?></td>
+                                            <td><?php echo $result['Status']?></td>
+                                            <td><?php echo $result['Date']?></td>
                                             <td>
-                                                <div class="option-btn">
-                                                <?php 
-                                                    if ($row['order_status']=='Pending') {
-                                                        echo "<span class='btn btn-success active-btn'><a href='?type=status&operation=active&id=".$row['id']."'>Active</a></span>";
-                                                    }else{
-                                                        echo "<span class='btn btn-danger deactive-btn'><a href='?type=status&operation=deactive&id=".$row['id']."'>Deactive</a></span>";
-                                                    }
-                                                    echo "<span class='btn  delete-btn'><a href='?type=delete&id=".$row['id']."'>Delete</a></span> ";
-                                                   
-                                                 ?>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php $i++; } ?>
+    <form method="post">
+        <input type="hidden" name="OrderID" value="<?php echo $result['OrderID']; ?>">
+        <select name="status" id="status_<?php echo $result['ProductID']; ?>">
+            <option value="pending" <?php if ($result['Status'] == 'pending') echo 'selected'; ?>>Pending</option>
+            <option value="processing" <?php if ($result['Status'] == 'processing') echo 'selected'; ?>>Processing</option>
+            <option value="shipped" <?php if ($result['Status'] == 'shipped') echo 'selected'; ?>>Shipped</option>
+        </select>
+        <button type="submit" name="submit">Update</button>
+    </form>
+</td>
+
+
+                                       </tr>
+                                       <?php
+                                             }
+                                            }
+                                       ?>
                                     </tbody>
                                 </table>
                             </div>

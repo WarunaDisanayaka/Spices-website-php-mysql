@@ -118,11 +118,26 @@
             }
         }
 
-
         public function getOrders($cusId){
                 $query="SELECT * FROM Orders WHERE BuyerID='$cusId'";
                 $result=$this->db->select($query);
                 return $result;
+        }
+
+
+
+
+        public function getAllOrders(){
+            $query = "SELECT * FROM Orders JOIN Buyer ON Orders.BuyerID = Buyer.BuyerID";
+            $result=$this->db->select($query);
+            return $result;
+        }
+
+
+        public function updateOrder($orderId,$status){
+            $query = "UPDATE Orders SET Status='$status' WHERE OrderID='$orderId'";
+            $result=$this->db->update($query);
+            return $result;
         }
         
 
