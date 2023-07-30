@@ -88,7 +88,23 @@
          echo $addCat;  
       }
    ?>
-         <p class="mt-3"><small>Size: <?php echo $result['Size'];   ?></small></p>
+   <br>
+         <div class="mb-3">
+  <label for="size" class="form-label">Select Size:</label>
+  <?php
+  // Get the available sizes for the product (assuming $result['Size'] contains a comma-separated list)
+  $availableSizes = explode(", ", $result['Size']);
+  foreach ($availableSizes as $sizeOption) {
+  ?>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="sizes[]" id="size_<?php echo $sizeOption; ?>" value="<?php echo $sizeOption; ?>">
+      <label class="form-check-label btn btn-outline-primary" for="size_<?php echo $sizeOption; ?>"><?php echo $sizeOption; ?></label>
+    </div>
+  <?php
+  }
+  ?>
+</div>
+
          <p><?php echo $result['Description'];   ?></p>
       </div>
    </div>
@@ -97,6 +113,18 @@
       }
    ?>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const checkboxes = document.querySelectorAll('.form-check-input');
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      this.nextElementSibling.classList.toggle('selected', this.checked);
+    });
+  });
+});
+</script>
 
 <?php
     require 'footer.php';

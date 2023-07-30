@@ -581,3 +581,31 @@ body, h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
   color: white;
 }
+
+/* Hide the checkboxes */
+.form-check-input {
+  display: none;
+}
+
+/* Style the buttons as unselected */
+.form-check-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-check-label:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* Style the buttons as selected when checked */
+.form-check-input:checked + .form-check-label {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}

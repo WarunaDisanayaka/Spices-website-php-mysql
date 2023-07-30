@@ -38,6 +38,10 @@
 
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark menu-bar fixed-top ">
       <div class="container-fluid ">
+      <a class="navbar-brand" href="#">
+            <!-- Replace "your_logo_path.png" with the actual path to your logo image -->
+            <!-- <img src="img/spices web logo.jpeg" alt="Your Logo"> -->
+        </a>
         <!-- <a class="navbar-brand " href="#"><h1 class="logo text-light" style="font-family: 'Times New Roman', Times, serif;">Spices<span class=" text-warning">Hub</span></h1></a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
@@ -56,7 +60,7 @@
                 </a>
             </li>
             <li class="nav-item me-3 me-lg-0">
-    <a class="nav-link" href="login.php">
+             <a class="nav-link" href="login.php">
         <i class="fas fa-user"></i> <!-- Replace "fas fa-shopping-cart" with "fas fa-user" for the profile icon -->
     </a>
 </li>
@@ -70,6 +74,11 @@
               </ul>
             </li> -->
           </ul>
+          <!-- Search bar -->
+          <form method="POST" action="productsearch.php" class="d-flex">
+                <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
         </div>
       </div>
     </nav>

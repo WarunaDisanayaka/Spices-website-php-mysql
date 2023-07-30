@@ -91,11 +91,17 @@
                               <label for="exampleInputEmail1">Description</label>
                               <textarea type="text" name="description" class="form-control"  placeholder="Enter Description"></textarea>
                            </div>
-                           
-                           <div class="form-group w-50">
-                              <label for="exampleInputEmail1">Size</label>
-                              <textarea type="text" name="size" class="form-control"  placeholder="Enter Size" ></textarea>
-                           </div>
+                        
+
+
+<div class="form-group w-50">
+  <label>Grams</label><br>
+  <input type="checkbox" name="grams[]" value="100g"> 100g<br>
+  <input type="checkbox" name="grams[]" value="250g"> 250g<br>
+  <input type="checkbox" name="grams[]" value="500g"> 500g<br>
+  <input type="checkbox" name="grams[]" value="1kg"> 1kg<br>
+</div>
+
 
                            <div class="cat-btn">
                               <button type="submit" name="submit" class="btn btn-success">Add</button>

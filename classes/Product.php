@@ -18,8 +18,7 @@
             $description=mysqli_real_escape_string($this->db->link,$data['description']);
             $price=mysqli_real_escape_string($this->db->link,$data['price']);
             $stock=mysqli_real_escape_string($this->db->link,$data['qty']);
-            $size=mysqli_real_escape_string($this->db->link,$data['size']);
-
+           
             $premited=array('jpg','jpeg','png','gif');
             $file_name=$_FILES['image']['name'];
             $file_size=$_FILES['image']['size'];
@@ -29,6 +28,10 @@
             $file_ext=strtolower(end($div));
             $unique_image=substr(md5(time()),0,10).'.'.$file_ext;
             $uploaded_image="upload/".$unique_image;
+
+            // Handle the grams data
+             $grams = isset($data['grams']) ? $data['grams'] : array();
+             $size = implode(", ", $grams);
 
             if ($productName == "" || $catId=="" ||  $description=="" || $price=="" || $stock=="" || $size=="" ) {
                 $msg="Fields must not be empty !";
@@ -118,6 +121,7 @@
             }
         }
 
+        
 
         public function delProduct($id){
             $query="DELETE FROM Product WHERE  ProductID='$id'";
@@ -129,6 +133,17 @@
             }
         }
 
+
+        public function searchProducts($searchTerm){
+            // Sanitize the search term to prevent SQL injection (use the appropriate sanitization method based on your database library)
+            $sanitizedSearchTerm = $this->db->sanitize($searchTerm);
+        
+            // Build the SQL query to search for products
+            $query = "SELECT * FROM Product WHERE Name LIKE '%$sanitizedSearchTerm%'";
+            $result = $this->db->select($query);
+            return $result;
+        }
+        
 
     }
 ?>

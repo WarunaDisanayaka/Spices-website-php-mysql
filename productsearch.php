@@ -2,7 +2,9 @@
     require 'navigation.php';
 ?>
 <?php
-    
+    if (isset($_POST['search'])) {
+        $searchTerm=$_POST['search'];
+    }
 ?>
  <!-- product-grid -->
    
@@ -10,7 +12,7 @@
   
       <div class="row">
       <?php
-            $getProducts=$pd->getAllProducts();
+            $getProducts=$pd->searchProducts($searchTerm);
             if ($getProducts) {
                 while ($result=$getProducts->fetch_assoc()) {
         ?>
