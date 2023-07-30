@@ -197,7 +197,8 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 .product-grid2 .product-image2{
  overflow:hidden;
- position:relative
+ position:relative;
+ height: 18rem;
 }
 .product-grid2 .product-image2 a{
  display:block
@@ -366,7 +367,8 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 .product-grid .product-image{
   position:relative;
-  transition:all .3s ease 0s
+  transition:all .3s ease 0s;
+  height: 18rem;
 }
 .product-grid .product-image a{
   display:block
