@@ -57,6 +57,13 @@
 
         }
 
+        public function getNewProducts(){
+            $query="SELECT * FROM Product LIMIT 4";
+            $result=$this->db->select($query);
+            return $result;
+ 
+         }
+
 
         public function getProById($id){
             $query="SELECT * FROM Product WHERE ProductID='$id'";
